@@ -6,7 +6,6 @@ const config = require('./config/config').get(process.env.NODE_ENV);
 
 const { User } = require('./models/user');
 const { Game } = require('./models/game');
-const { auth } = require('./middleware/auth');
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,16 +15,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE);
 
 // GET
-app.get('/api/auth', auth, (req,res)=>{
-  res.json({
-    isAuth: true,
-    id: req.user._id,
-    email: req.user.email,
-    name: req.user.name,
-    lastname: req.user.lastname
-  })
-})
-
 app.get('/api/games', (req, res) => {
 	let skip = parseInt(req.query.skip);
 	let limit = parseInt(req.query.limit);
@@ -47,38 +36,6 @@ app.get('/api/getGame', (req, res) => {
 	Game.findById(id, (err, doc) => {
 		if (err) return res.status(400).send(err);
 		res.send(doc);
-	});
-});
-
-app.get('/api/getReviewer', (req, res) => {
-	let id = req.query.id;
-	User.findById(id, (err, doc) => {
-		if (err) return res.status(400).send(err);
-		res.json({
-			name: doc.name,
-			lastname: doc.lastname
-		});
-	});
-});
-
-app.get('/api/users', (req, res) => {
-	User.find({}, (err, users) => {
-		if (err) return res.status(400).send(err);
-		res.status(200).send(users);
-	});
-});
-
-app.get('/api/user_posts', (req, res) => {
-	Game.find({ ownerId: req.query.user }).exec((err, docs) => {
-		if (err) return res.status(400).send(err);
-		res.send(docs);
-	});
-});
-
-app.get('/api/logout', auth, (req, res) => {
-	req.user.deleteToken(req.token, (err, user) => {
-		if (err) return res.status(400).send(err);
-		res.sendStatus(200);
 	});
 });
 
@@ -115,11 +72,11 @@ app.post('/api/login', (req, res) => {
 
 			user.generateToken((err, user) => {
 				if (err) return res.status(400).send(err);
-				res.cookie('auth', user.token).json({
-					isAuth: true,
-					id: user._id,
-					email: user.email
-				});
+				res.cookie('auth', user.token).json({ 
+          isAuth: true, 
+          id: user._id, 
+          email: user.email 
+        });
 			});
 		});
 	});
