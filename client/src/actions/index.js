@@ -15,3 +15,35 @@ export function getGames(limit = 10, start = 0, order = 'asc', list = ''){
     payload: request
   }
 }
+
+export function getGameWithReviewer(id){
+    const request = axios.get(`/api/getGame?id=${id}`)
+
+    return (dispatch) => {
+      request.then(response => {
+        let game = response.data;
+        
+        axios.get(`/api/getReviewer?id=${game.ownerId}`)
+        .then(response => {
+          let gameData = {
+            game,
+            reviewer: response.data
+          }
+          dispatch({ 
+            type: 'GET_GAME_W_REVIEWER', 
+            payload: gameData 
+          });
+        })
+      })
+    }
+}
+
+export function clearGamePage(){
+  return {
+    type: 'CLEAR_GAME_PAGE',
+    payload: {
+      game:{},
+      reviewer:{}
+    }
+  }
+}

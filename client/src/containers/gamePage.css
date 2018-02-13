@@ -1,0 +1,85 @@
+.gr_container {
+  margin: auto;
+  padding-top: 20px;
+	box-sizing: border-box;
+	text-align: center;
+	max-width: 750px;
+}
+
+.gr_header {
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 20px;
+}
+
+.gr_header h2 {
+	font-weight: 300;
+	font-size: 50px;
+	margin: 0px;
+}
+.gr_header h5 {
+	margin: 5px 0px;
+	font-size: 25px;
+}
+
+.gr_reviewer {
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+.gr_reviewer span {
+	font-weight: 500;
+}
+
+.gr_review {
+  padding: 15px;
+	text-align: left;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 27px;
+}
+
+.gr_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.left {
+	min-width: 50%;
+	background: #e91e63;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 15px;
+	font-weight: 300;
+	font-size: 20px;
+}
+.left div {
+	padding: 7px;
+	box-sizing: border-box;
+}
+.left div span {
+	font-weight: 700;
+}
+
+.right {
+	flex-grow: 1;
+	height: 106px;
+	background: #3c3c3c;
+	color: #fff;
+	font-weight: 700;
+	padding: 21px 15px;
+	box-sizing: border-box;
+	text-align: center;
+}
+.right div {
+	font-size: 40px;
+	font-weight: 300;
+}
+
+.logout_container h1 {
+	color: #02bcd4;
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+	padding-top: 31px;
+}
