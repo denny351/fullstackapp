@@ -6,6 +6,7 @@ const config = require('./config/config').get(process.env.NODE_ENV);
 
 const { User } = require('./models/user');
 const { Game } = require('./models/game');
+const { auth } = require('./middleware/auth');
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,6 +16,16 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE);
 
 // GET
+app.get('/api/auth', auth, (req, res) => {
+	res.json({
+		isAuth: true,
+		id: req.user._id,
+		email: req.user.email,
+		name: req.user.name,
+		lastname: req.user.lastname
+	});
+});
+
 app.get('/api/games', (req, res) => {
 	let skip = parseInt(req.query.skip);
 	let limit = parseInt(req.query.limit);

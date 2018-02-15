@@ -13,10 +13,10 @@ const Routes = () => {
 	return (
 		<Layout>
 			<Switch>
-				<Route path="/" exact component={Home} />
-				<Route path="/game/:id" exact component={GamePage} />
-				<Route path="/login" exact component={Login} />
-				<Route path="/user" exact component={User} />
+				<Route path="/" exact component={Auth(Home, null)} />
+				<Route path="/game/:id" exact component={Auth(GamePage, null)} />
+				<Route path="/login" exact component={Auth(Login, false)} />
+				<Route path="/user" exact component={Auth(User, true)} />
 
 			</Switch>
 		</Layout>
