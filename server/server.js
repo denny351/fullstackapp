@@ -83,7 +83,7 @@ app.post('/api/register', (req, res) => {
 
 app.post('/api/login', (req, res) => {
 	User.findOne({ email: req.body.email }, (err, user) => {
-		if (err)
+		if (!user)
 			return res.json({
 				isAuth: false,
 				message: 'Auth failed, email not found'
