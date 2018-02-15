@@ -1,0 +1,25 @@
+.user_container {
+  text-align: center
+}
+.avatar {
+	margin-top: 30px;
+}
+.avatar img {
+	width: 200px;
+}
+.info {
+	box-sizing: border-box;
+  padding: 20px;
+  display: inline-block;
+  text-align: left;
+}
+.info div {
+	font-size: 23px;
+	font-weight: 300;
+	margin-bottom: 10px;
+	color: #a4a4a4;
+}
+.info div span {
+	font-weight: 500;
+	color: #001766;
+}
