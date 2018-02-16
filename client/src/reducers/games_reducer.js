@@ -14,7 +14,10 @@ export default function(state = {}, action) {
 				game: action.payload.game,
 				reviewer: action.payload.reviewer
       };
-
+    case 'ADD_GAME':
+      return {...state, newGame: action.payload}
+    case 'CLEAR_NEWGAME':
+      return { ...state, newGame: action.payload }
 		default:
 			return state;
 	}

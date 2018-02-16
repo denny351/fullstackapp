@@ -52,20 +52,35 @@ export function clearGamePage() {
 
 export function loginUser({ email, password }) {
 	const request = axios.post('/api/login', { email, password })
-		              .then(response => response.data);
+		.then(response => response.data);
 	return {
 		type: 'USER_LOGIN',
 		payload: request
 	};
 }
 
-export function auth(){
-  const request = axios.get('/api/auth')
-                  .then(response => response.data);
+export function auth() {
+	const request = axios.get('/api/auth').then(response => response.data);
 
-  return {
-    type: 'USER_AUTH',
-    payload: request
-  }
+	return {
+		type: 'USER_AUTH',
+		payload: request
+	};
+}
 
+// ADD BOOK
+export function addGame(game) {
+	const request = axios.post('/api/game', game).then(response => response.data);
+
+	return {
+		type: 'ADD_GAME',
+		payload: request
+	};
+}
+
+export function clearNewGame() {
+	return {
+		type: 'CLEAR_NEWGAME',
+		payload: {}
+	};
 }

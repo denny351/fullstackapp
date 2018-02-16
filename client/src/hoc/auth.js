@@ -16,7 +16,6 @@ export default function(ComposedClass, reload){
 
     componentWillReceiveProps = (nextProps) => {
       this.setState({loading: false});
-      console.log(nextProps)
 
       if(!nextProps.user.login.isAuth){
         if(reload){
@@ -32,7 +31,6 @@ export default function(ComposedClass, reload){
     
 
     render(){
-      console.log(this.props)
       if(this.state.loading){
         return <Loader />
       }
