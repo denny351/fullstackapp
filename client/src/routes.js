@@ -7,6 +7,7 @@ import GamePage from './containers/games_container';
 import Login from './containers/Admin/login';
 import User from './components/Admin';
 import AddGame from './containers/Admin/addGame';
+import UserReviews from './components/Admin/userReviews';
 
 import Auth from './hoc/auth';
 
@@ -19,6 +20,7 @@ const Routes = () => {
 				<Route path="/login" exact component={Auth(Login, false)} />
 				<Route path="/user" exact component={Auth(User, true)} />
 				<Route path="/user/add" exact component={Auth(AddGame, true)} />
+				<Route path="/user/user-reviews" exact component={Auth(UserReviews, true)} />
 			</Switch>
 		</Layout>
 	);

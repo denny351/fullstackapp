@@ -84,3 +84,11 @@ export function clearNewGame() {
 		payload: {}
 	};
 }
+
+export function getUserReviews(userId){
+  const request = axios.get(`/api/user_posts?user=${userId}`).then(response => response.data)
+  return {
+    type: 'GET_USER_REVIEWS',
+    payload: request
+  }
+}
