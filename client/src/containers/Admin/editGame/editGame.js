@@ -23,6 +23,7 @@ class EditGame extends PureComponent {
 	};
 
 	componentWillReceiveProps = nextProps => {
+    console.log(nextProps);
     let game = nextProps.games.game;
     
 		this.setState({
@@ -49,11 +50,25 @@ class EditGame extends PureComponent {
 	submitForm = e => {
     e.preventDefault();
     this.props.dispatch(updateGame(this.state.formdata))
-	};
+  };
+  
+  deletePost = () => {
+    this.props.dispatch(deleteGame(this.props.match.params.id))
+  }
+
+  redirectUser = () => {
+    setTimeout(() => {
+      this.props.history.push('/user/user-reviews')
+    }, 1000);
+  }
+
+  componentWillUnmount = () => {
+    this.props.dispatch(clearGame())
+  }
+  
 
 	render() {
     let games = this.props.games;
-    console.log(games)
 		return (
 			<div className={styles.ag_container}>
 				<form onSubmit={this.submitForm}>
@@ -103,7 +118,11 @@ class EditGame extends PureComponent {
 					</div>
 					<button type="submit">Edit Review</button>
 					<div className={styles.delete_game}>
-						<div className={styles.button}>Delete review</div>
+            <div className={styles.button}
+              onClick={this.deletePost}
+            >
+              Delete review
+            </div>
 					</div>
           {
             games.updateGame
@@ -112,6 +131,11 @@ class EditGame extends PureComponent {
                   Post updated, <Link to={`/game/${games.game._id}`}>Click here to see your post</Link>
                 </div>
               </div>
+            : null
+          }
+          {
+            games.postDeleted
+            ? <div className={styles.post_delete}>Post Deleted {this.redirectUser()}</div>
             : null
           }
 				</form>

@@ -82,8 +82,17 @@
 .edit_confirm {
 	background: #8bc34a;
 	color: #fff;
-  padding: 10px 0px;
+	padding: 10px 0px;
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.post_delete {
+	background: #f44336;
+	color: #fff;
   width: 80%;
-  margin: auto;
+	margin: auto;
   margin-top: 20px;
+  padding: 10px 0px;
 }

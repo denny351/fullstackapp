@@ -22,6 +22,13 @@ export default function(state = {}, action) {
       return { ...state, newGame: action.payload }
     case 'UPDATE_GAME':
       return {...state, updateGame: action.payload.success, game: action.payload.doc }
+    case 'DELETE_GAME':
+      return {...state, postDeleted: action.payload}
+    case 'CLEAR_GAME':
+      return {...state, 
+        updateGame: action.payload.updateGame, 
+        game: action.payload.game, 
+        postDeleted: action.payload.postDeleted}
 		default:
 			return state;
 	}

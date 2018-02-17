@@ -103,6 +103,24 @@ export function updateGame(data){
   }
 }
 
+export function deleteGame(id) {
+  const request = axios.delete(`/api/game_delete?id=${id}`).then(response => response.data)
+  return {
+    type: 'DELETE_GAME',
+    payload: request
+  }
+}
+
+export function clearGame() {
+  return {
+    type: 'CLEAR_GAME',
+    payload: {
+      game: {},
+      updateGame: false,
+      postDeleted: false
+    }
+  }
+}
 
 // ALL USER REVIEWS
 export function getUserReviews(userId){
