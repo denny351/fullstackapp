@@ -6,8 +6,9 @@ import Home from './components/Home/home';
 import GamePage from './containers/games_container';
 import Login from './containers/Admin/login';
 import User from './components/Admin';
-import AddGame from './containers/Admin/addGame';
+import AddGame from './containers/Admin/addGame/addGame';
 import UserReviews from './components/Admin/userReviews';
+import EditGame from './containers/Admin/editGame/editGame';
 
 import Auth from './hoc/auth';
 
@@ -21,6 +22,7 @@ const Routes = () => {
 				<Route path="/user" exact component={Auth(User, true)} />
 				<Route path="/user/add" exact component={Auth(AddGame, true)} />
 				<Route path="/user/user-reviews" exact component={Auth(UserReviews, true)} />
+				<Route path="/user/edit-post/:id" exact component={Auth(EditGame, true)} />
 			</Switch>
 		</Layout>
 	);

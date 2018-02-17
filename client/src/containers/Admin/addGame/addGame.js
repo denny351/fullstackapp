@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addGame, clearNewGame } from '../../actions';
+import { addGame, clearNewGame } from '../../../actions';
 
 import styles from './addGame.css';
 class AddGame extends Component {

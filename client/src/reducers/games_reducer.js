@@ -1,7 +1,9 @@
 export default function(state = {}, action) {
 	switch (action.type) {
 		case 'GET_GAMES':
-			return { ...state, list: action.payload };
+      return { ...state, list: action.payload };
+    case 'GET_GAME':
+      return {...state, game: action.payload};
 		case 'GET_GAME_W_REVIEWER':
 			return {
 				...state,
@@ -18,6 +20,8 @@ export default function(state = {}, action) {
       return {...state, newGame: action.payload}
     case 'CLEAR_NEWGAME':
       return { ...state, newGame: action.payload }
+    case 'UPDATE_GAME':
+      return {...state, updateGame: action.payload.success, game: action.payload.doc }
 		default:
 			return state;
 	}

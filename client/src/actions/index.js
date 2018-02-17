@@ -85,6 +85,26 @@ export function clearNewGame() {
 	};
 }
 
+// EDIT BOOK
+export function getGame(id){
+  const request = axios.get(`/api/getGame?id=${id}`)
+  .then(response => response.data)
+  return {
+    type: 'GET_GAME',
+    payload: request
+  }
+}
+
+export function updateGame(data){
+  const request = axios.post(`/api/game_update`, data).then(response => response.data)
+  return {
+    type: 'UPDATE_GAME',
+    payload: request
+  }
+}
+
+
+// ALL USER REVIEWS
 export function getUserReviews(userId){
   const request = axios.get(`/api/user_posts?user=${userId}`).then(response => response.data)
   return {
