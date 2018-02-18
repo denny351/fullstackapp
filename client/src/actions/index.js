@@ -68,6 +68,32 @@ export function auth() {
 	};
 }
 
+export function getUsers(){
+  const request = axios.get('/api/users').then(response => response.data);
+  return {
+    type: 'GET_USERS',
+    payload: request
+  }
+}
+
+export function registerUser(user, userList){
+  const request = axios.post(`/api/register`, user)
+
+  return(dispatch) => {
+    request.then((response) => {
+      let users = response.data.success ? [...userList, response.data.user] : userList; 
+      let registerData = {
+        success: response.data.success,
+        users
+      }
+      dispatch({
+        type: 'USER_REGISTER',
+        payload: registerData
+      })
+    })
+  }
+}
+
 // ADD BOOK
 export function addGame(game) {
 	const request = axios.post('/api/game', game).then(response => response.data);
@@ -130,3 +156,5 @@ export function getUserReviews(userId){
     payload: request
   }
 }
+
+
