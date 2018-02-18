@@ -115,7 +115,7 @@ export function clearGame() {
   return {
     type: 'CLEAR_GAME',
     payload: {
-      game: {},
+      game: null,
       updateGame: false,
       postDeleted: false
     }
