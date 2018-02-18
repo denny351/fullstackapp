@@ -10,6 +10,7 @@ import AddGame from './containers/Admin/addGame/addGame';
 import UserReviews from './components/Admin/userReviews';
 import EditGame from './containers/Admin/editGame/editGame';
 import Register from './containers/Admin/register/register';
+import Logout from './components/Admin/logout';
 
 import Auth from './hoc/auth';
 
@@ -19,6 +20,7 @@ const Routes = () => {
 				<Route path="/" exact component={Auth(Home, null)} />
 				<Route path="/game/:id" exact component={Auth(GamePage, null)} />
 				<Route path="/login" exact component={Auth(Login, false)} />
+				<Route path="/user/logout" exact component={Auth(Logout, true)} />
 				<Route path="/user" exact component={Auth(User, true)} />
 				<Route path="/user/add" exact component={Auth(AddGame, true)} />
 				<Route path="/user/user-reviews" exact component={Auth(UserReviews, true)} />

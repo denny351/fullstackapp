@@ -75,6 +75,14 @@ app.get('/api/user_posts', (req, res) => {
 	});
 });
 
+app.get('/api/logout', auth, (req, res) => {
+	req.user.deleteToken(req.token, (err, user) => {
+		if (err) return res.status(400).send(err);
+		res.sendStatus(200);
+	});
+});
+
+
 // POST
 app.post('/api/game', (req, res) => {
 	const game = new Game(req.body);
