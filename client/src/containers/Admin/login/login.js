@@ -60,6 +60,7 @@ class Login extends Component {
 						{user.login && <div>{user.login.message}</div>}
 					</div>
 				</form>
+        <p>Log in with email: <strong>admin@admin.com</strong> & password: <strong>password</strong></p>
 			</div>
 		);
 	}
